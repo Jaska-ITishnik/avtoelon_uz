@@ -4,4 +4,3 @@ mig:
 
 super:
 	python3 manage.py createsuperuser
-
