@@ -7,7 +7,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-9&f%2-lmmc=7!bens(ehxsm16p!=*9z4$@!g-6_c^cz#2&z%q*'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -72,7 +72,6 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
