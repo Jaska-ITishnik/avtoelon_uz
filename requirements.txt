@@ -1,5 +1,6 @@
 asgiref==3.8.1
 attrs==24.2.0
+beautifulsoup4==4.12.3
 Django==5.1
 django-ckeditor-5==0.2.13
 django-filter==24.3
@@ -19,5 +20,6 @@ PyYAML==6.0.2
 referencing==0.35.1
 rpds-py==0.20.0
 six==1.16.0
+soupsieve==2.6
 sqlparse==0.5.1
 uritemplate==4.1.1

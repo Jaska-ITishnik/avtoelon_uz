@@ -1,25 +1,32 @@
-from django.core.management.base import BaseCommand, CommandError
-from polls.models import Question as Poll
+import random
+
+from django.core.management.base import BaseCommand
 from faker import Faker
+
+from apps.models import News
+
 
 class Command(BaseCommand):
     help = "Closes the specified poll for voting"
 
     def add_arguments(self, parser):
-        parser.add_argument("poll_ids", nargs="+", type=int)
+        parser.add_argument("new", type=int)
 
     def handle(self, *args, **options):
         fake = Faker()
-        
-        for poll_id in options["poll_ids"]:
-            try:
-                poll = Poll.objects.get(pk=poll_id)
-            except Poll.DoesNotExist:
-                raise CommandError('Poll "%s" does not exist' % poll_id)
 
-            poll.opened = False
-            poll.save()
+        self.stdout.write(self.style.SUCCESS('Populating database ...'))
 
-            self.stdout.write(
-                self.style.SUCCESS('Successfully closed poll "%s"' % poll_id)
-            )
+        news = []
+        f = Faker()
+        for _ in range(options['new']):
+            news.append(News(
+                content=f.text(),
+                author_id=1,
+                image=f.file_extension(),
+                title=f.text()
+            ))
+        News.objects.bulk_create(news)
+        self.stdout.write(
+            self.style.SUCCESS(f"Successfully populated {options['new']} users")
+        )

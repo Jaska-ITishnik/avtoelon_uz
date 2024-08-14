@@ -12,7 +12,7 @@ class NewsListCreateApiView(ListCreateAPIView):
 
     def get_object(self):
         news = super().get_object()
-        news.views += 1
+        news.views_count += 1
         news.save()
         return news
 

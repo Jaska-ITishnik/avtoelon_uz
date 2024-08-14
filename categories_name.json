@@ -1,0 +1,32 @@
+[
+  {
+    "Avtomobillar": [
+      "Yengil avtomobillar",
+      "Mototexnika",
+      "Suv transporti"
+    ],
+    "Ehtiyot qismlari va tovarlar": [
+      "Ehtiyot qismlar",
+      "Moy va rasxodniklar",
+      "Aksessuarlar va elektronika",
+      "Shinalar",
+      "Disklar",
+      "Avtomobil ehtiyot qismlar uchun"
+    ],
+    "Maxsus texnika": [
+      "Yuk mashinalari",
+      "Avtobuslar",
+      "Maxsus texnika",
+      "Maxsus texnika ehtiyot qismlari",
+      "Maxsus texnika ijarasi",
+      "Tijorat xizmatlari",
+      "Shinalar va disklar"
+    ],
+    "Ta'mirlash va xizmatlar": [
+      "Ta'mirlash",
+      "Xizmatlar",
+      "Tyuning",
+      "Boshqalar"
+    ]
+  }
+]
