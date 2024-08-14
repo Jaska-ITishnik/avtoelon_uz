@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from apps.models import News, User, PhoneNumber
+from apps.models.news import NewsImage
 
 
 class UserSerializer(ModelSerializer):
@@ -19,6 +20,26 @@ class NewsSerializer(ModelSerializer):
         data = super().to_representation(instance)
         data['user'] = UserSerializer(instance.user).data
         return data
+
+
+class NewsProductSerializer(serializers.ModelSerializer):
+    primary_image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = News
+        fields = '__all__'
+
+    def get_primary_image(self, obj):
+        first_image = obj.newsimage_set.first()
+        if first_image:
+            return NewsImageSerializer(first_image).data
+        return None
+
+
+class NewsImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsImage
+        fields = ['photo']
 
 
 class PhoneNumberSerializer(ModelSerializer):
