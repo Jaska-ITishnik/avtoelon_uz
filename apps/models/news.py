@@ -8,10 +8,20 @@ class News(Model):
     views_count = PositiveIntegerField(default=0, editable=False)
     content = CKEditor5Field()
     created_at = DateTimeField(auto_now=True)
-    image = ImageField(upload_to='news_images/', null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
         db_table = 'news'
+
+
+class NewsImage(Model):
+    news = ForeignKey(News, on_delete=CASCADE)
+    photo = ImageField(upload_to='news_images/', null=True, blank=True)
+    created_at = DateTimeField(auto_now_add=True)
+    updated_at = DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'news_images'
+
