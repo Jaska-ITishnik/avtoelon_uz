@@ -1,6 +1,8 @@
-from django.db.models import Model, ForeignKey, CASCADE, JSONField
+from django.db.models import ForeignKey, CASCADE, JSONField
+
+from .categories import SlugBase
 
 
-class MarksModel(Model):
+class MarkModels(SlugBase):
     subcategory_field = ForeignKey('apps.Field', on_delete=CASCADE)
-    model_marks = JSONField(default=dict)
+    mark_models = JSONField(default=dict)

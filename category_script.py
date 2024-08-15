@@ -21,3 +21,4 @@ for i, cat in enumerate(categories):
     soup = BeautifulSoup(sub[i], 'html.parser')
     categories_name = soup.find('select', {'id': 'change-category-select'}).find_all('option')
     d[cat] = [i.text.strip() for i in categories_name]
+print(d)

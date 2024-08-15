@@ -3,8 +3,8 @@ from rest_framework.permissions import AllowAny
 
 from apps.models.news import News
 from apps.serializers import NewsSerializer, NewsProductSerializer
-from models import User
-from serializers import SendVerificationCodeSerialize, VerifyCodeSerializer
+from apps.models.user import User
+from apps.serializers import SendVerificationCodeSerialize, VerifyCodeSerializer
 
 
 class NewsListCreateApiView(ListCreateAPIView):

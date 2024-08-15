@@ -1,8 +1,8 @@
 from django.urls import path
 from drf_spectacular.views import SpectacularSwaggerView
 
-from apps.views import NewsListCreateApiView, NewsProductAPIView
-from views import SendVerificationCodeCreateAPIView, VerifyCodeCreateAPIView
+from apps.views import NewsListCreateApiView, NewsProductAPIView, SendVerificationCodeCreateAPIView, \
+    VerifyCodeCreateAPIView
 
 urlpatterns = [
     path('api/v1/news', NewsListCreateApiView.as_view(), name='news-list'),

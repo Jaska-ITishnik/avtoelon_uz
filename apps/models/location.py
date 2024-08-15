@@ -1,18 +1,15 @@
-from django.db.models import Model, ForeignKey, CASCADE, CharField
+from django.db.models import ForeignKey, CASCADE
+
+from .categories import SlugBase
 
 
-class Region(Model):
-    name = CharField(max_length=220)
-
+class Region(SlugBase):
     class Meta:
         db_table = 'regions'
 
 
-class District(Model):
-    name = CharField(max_length=220)
+class District(SlugBase):
     region = ForeignKey('apps.Region', CASCADE)
-
-    #  slug
 
     class Meta:
         db_table = 'districts'
