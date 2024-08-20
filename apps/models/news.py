@@ -10,6 +10,7 @@ class News(Model):
     author = ForeignKey('apps.User', on_delete=CASCADE)
     views_count = PositiveIntegerField(default=0, editable=False)
     content = CKEditor5Field()
+    photo = ImageField(upload_to='news_image/')
     created_at = DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -22,13 +23,3 @@ class News(Model):
         self.slug = slugify(self.title)
         super().save(*args, force_insert=force_insert, force_update=force_update, using=using,
                      update_fields=update_fields)
-
-
-class NewsImage(Model):
-    news = ForeignKey(News, on_delete=CASCADE)
-    photo = ImageField(upload_to='news_images/', null=True, blank=True)
-    created_at = DateTimeField(auto_now_add=True)
-    updated_at = DateTimeField(auto_now=True)
-
-    class Meta:
-        db_table = 'news_images'

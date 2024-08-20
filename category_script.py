@@ -22,3 +22,17 @@ for i, cat in enumerate(categories):
     categories_name = soup.find('select', {'id': 'change-category-select'}).find_all('option')
     d[cat] = [i.text.strip() for i in categories_name]
 print(d)
+
+#
+# from bs4 import BeautifulSoup
+# import httpx
+# link = 'https://avtoelon.uz/uz/a/new/?cat=service.tuning&id=5363229&uuid=7ed1f8a8-601c-4a96-a8c8-dc3e7d315a0d'
+# # section-parameter
+# response = httpx.get(link)
+#
+# soup = BeautifulSoup(response.content, 'html.parser')
+#
+# categories = soup.find("select", {"id": "change-section-select"})
+# for category in categories:
+#     print(category.text.strip())
+#

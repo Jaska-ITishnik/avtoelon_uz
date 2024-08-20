@@ -1,5 +1,3 @@
-import random
-
 from django.core.management.base import BaseCommand
 from faker import Faker
 
@@ -13,8 +11,6 @@ class Command(BaseCommand):
         parser.add_argument("new", type=int)
 
     def handle(self, *args, **options):
-        fake = Faker()
-
         self.stdout.write(self.style.SUCCESS('Populating database ...'))
 
         news = []
@@ -23,8 +19,9 @@ class Command(BaseCommand):
             news.append(News(
                 content=f.text(),
                 author_id=1,
-                image=f.file_extension(),
-                title=f.text()
+                photo=f.file_name(extension='png'),
+                title=f.text(),
+                slug=f.slug()
             ))
         News.objects.bulk_create(news)
         self.stdout.write(

@@ -1,6 +1,6 @@
 ****************************** First TODO ***********************************
 
-1. viloyat va tumanlarni yozish kk🌗
+1. viloyat va tumanlarni yozish kk🟢
 2. elon qoshib tekshirib korish kk🟢
 3. telefon nomer🟢
 4. category universal qilish (fieldlarini)
@@ -14,3 +14,10 @@
 
 Kim qaysi birini qiladi bilmadim lekin kelishib shu tasklarni qilishimiz shart😎
 ************************************************************************************
+
+
+******************************* Task (☠DEADLINE 20.08.2024) *************************
+1. news detail apini togrilash🟢
+2. news list apidagi serailizerni togrilash🟢
+3. phone qoshish va ochirish apilari kk 🟢
+4. VerifyCodeCreateAPIView da jwt qaytadigan qilish kk

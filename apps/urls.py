@@ -1,14 +1,18 @@
 from django.urls import path
-from drf_spectacular.views import SpectacularSwaggerView
 
-from apps.views import NewsListCreateApiView, NewsProductAPIView, SendVerificationCodeCreateAPIView, \
+from apps.views import NewsListCreateApiView, SendVerificationCodeCreateAPIView, \
     VerifyCodeCreateAPIView
+from apps.views import AmountUserGenericAPIView
+from apps.views import DeletePhoneNumberDestroyAPIView
+from apps.views import AddPhoneNumberCreateAPIView
+from apps.views import NewsDetailAPIView
 
 urlpatterns = [
-    path('api/v1/news', NewsListCreateApiView.as_view(), name='news-list'),
-    path('api/v1/news-products/<int:pk>/', NewsProductAPIView.as_view(), name='news-detail'),
-    path('api/v1/send-code', SendVerificationCodeCreateAPIView.as_view(), name='send-code'),
-    path('api/v1/verify-code', VerifyCodeCreateAPIView.as_view(), name='verify-code'),
-    path('', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('news', NewsListCreateApiView.as_view(), name='news-list'),
+    path('news-products/<int:pk>/', NewsDetailAPIView.as_view(), name='news-detail'),
+    path('user-amount', AmountUserGenericAPIView.as_view(), name='col-user'),
+    path('auth/register-send-code', SendVerificationCodeCreateAPIView.as_view(), name='send-code'),
+    path('auth/register-verify-code', VerifyCodeCreateAPIView.as_view(), name='verify-code'),
+    path('auth/delete-phone/<int:pk>', DeletePhoneNumberDestroyAPIView.as_view(), name='delete-phone'),
+    path('auth/add-phone/', AddPhoneNumberCreateAPIView.as_view(), name='add-phone')
 ]
-# comment!!!
