@@ -12,18 +12,12 @@ class Adv(Model):
     created_at = DateTimeField(auto_now_add=True)
     updated_at = DateTimeField(auto_now=True)
 
-    class Meta:
-        db_table = 'adv'
-
 
 class AdvImage(Model):
     adv = ForeignKey('apps.Adv', on_delete=CASCADE)
     photo = ImageField(upload_to='adv_images/%Y/%m/%d', null=True, blank=True)
     created_at = DateTimeField(auto_now_add=True)
     updated_at = DateTimeField(auto_now=True)
-
-    class Meta:
-        db_table = 'adv_images'
 
 
 class AdvSubcategoryField(Model):

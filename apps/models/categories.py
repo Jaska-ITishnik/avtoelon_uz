@@ -15,10 +15,8 @@ class SlugBase(Model):
         abstract = True
 
 
-
 class Category(SlugBase):
-    class Meta:
-        db_table = 'category'
+    pass
 
 
 class SubCategory(SlugBase):
@@ -33,5 +31,3 @@ class Field(Model):
     # is_required
     # type
     # help_text
-    class Meta:
-        db_table = 'field'

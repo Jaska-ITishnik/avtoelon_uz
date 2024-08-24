@@ -21,3 +21,29 @@ Kim qaysi birini qiladi bilmadim lekin kelishib shu tasklarni qilishimiz shart�
 2. news list apidagi serailizerni togrilash🟢
 3. phone qoshish va ochirish apilari kk 🟢
 4. VerifyCodeCreateAPIView da jwt qaytadigan qilish kk
+
+
+
+******************************* Task (☠DEADLINE 22.08.2024) *************************
+1. dynamic serializer🟢
+2. jwt qoshish🟢
+3. add phone remove phone togrilash🟢
+4. django cmds ni togrilash🟢
+5. filters -> Doniyorbek
+
+
+class AdvertisementFilter(FilterSet):
+    class Meta:
+        model = Advertisement
+        fields = ['price', 'manufactured_year']
+
+    min_price = filters.NumberFilter(field_name='price', lookup_expr='gte')
+    max_price = filters.NumberFilter(field_name='price', lookup_expr='lte')
+    min_year = filters.NumberFilter(field_name='manufactured_year', lookup_expr='gte')
+    max_year = filters.NumberFilter(field_name='manufactured_year', lookup_expr='lte')
+    region = filters.ModelChoiceFilter(queryset=Region.objects.all())
+    mark = filters.ModelChoiceFilter(queryset=Mark.objects.all())
+
+    is_negotiable = filters.BooleanFilter(field_name='is_negotiable')
+    is_dealership = filters.BooleanFilter(field_name='is_dealership')
+    is_lease_with_buyout = filters.BooleanFilter(field_name='is_lease_with_buyout')

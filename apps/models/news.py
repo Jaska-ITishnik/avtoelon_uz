@@ -7,7 +7,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 class News(Model):
     title = CharField(max_length=255)
     slug = SlugField(max_length=255)
-    author = ForeignKey('apps.User', on_delete=CASCADE)
+    author = ForeignKey('apps.User', CASCADE)
     views_count = PositiveIntegerField(default=0, editable=False)
     content = CKEditor5Field()
     photo = ImageField(upload_to='news_image/')
@@ -15,9 +15,6 @@ class News(Model):
 
     def __str__(self):
         return self.title
-
-    class Meta:
-        db_table = 'news'
 
     def save(self, *args, force_insert=False, force_update=False, using=None, update_fields=None):
         self.slug = slugify(self.title)
