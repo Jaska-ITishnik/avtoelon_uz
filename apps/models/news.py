@@ -1,5 +1,13 @@
-from django.db.models import Model, ForeignKey, CASCADE, PositiveIntegerField, DateTimeField, ImageField, CharField, \
-    SlugField
+from django.db.models import (
+    CASCADE,
+    CharField,
+    DateTimeField,
+    ForeignKey,
+    ImageField,
+    Model,
+    PositiveIntegerField,
+    SlugField,
+)
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 

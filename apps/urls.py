@@ -1,14 +1,29 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from apps.views import SendVerificationCodeCreateAPIView, \
-    VerifyCodeCreateAPIView, NewsListApiView, AdvListCreateAPIView, LoginGenericAPIView, CategoryListCreateAPIView, \
-    LogoutAPIView
-from apps.views import AmountUserGenericAPIView
-from apps.views import PhoneNumberDestroyAPIView
-from apps.views import AddPhoneNumberCreateAPIView
-from apps.views import NewsDetailAPIView
+from apps.views import (
+    AddPhoneNumberCreateAPIView,
+    AdvListCreateAPIView,
+    AmountUserGenericAPIView,
+    CategoryListCreateAPIView,
+    LoginGenericAPIView,
+    LogoutAPIView,
+    NewsDetailAPIView,
+    NewsListApiView,
+    PhoneNumberDestroyAPIView,
+    SendVerificationCodeCreateAPIView,
+    UserListAPIView,
+    VerifyCodeCreateAPIView, CategoryDocumentViewSet,
+)
+
+router = DefaultRouter()
+
+router.register('categofghjries', CategoryDocumentViewSet, 'categories')
 
 urlpatterns = [
+
+    path('users/', UserListAPIView.as_view(), name='users'),
+    path('', include(router.urls)),
     path('adv-list/', AdvListCreateAPIView.as_view(), name='adv-list'),
     path('category-list/', CategoryListCreateAPIView.as_view(), name='category-list'),
     path('news/', NewsListApiView.as_view(), name='news-list'),

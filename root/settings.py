@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -113,14 +116,15 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    # 'DEFAULT_PAGINATION_CLASS': 'apps.pagination.CustomPageNumberPagination',
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
 }
 
 SPECTACULAR_SETTINGS = {
@@ -220,4 +224,18 @@ CKEDITOR_5_CONFIGS = {
             'reversed': 'true',
         }
     }
+}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jasurbekbekmirzayev2004@gmail.com'
+EMAIL_HOST_PASSWORD = 'ubxs zcvw vzxv bweh'
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://localhost:9200'
+    },
 }

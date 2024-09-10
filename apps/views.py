@@ -1,23 +1,56 @@
-from drf_spectacular.utils import extend_schema
-from rest_framework import status
-from rest_framework.exceptions import ValidationError
-from rest_framework.generics import RetrieveAPIView, CreateAPIView, DestroyAPIView, GenericAPIView, \
-    ListCreateAPIView
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
+from django_elasticsearch_dsl_drf.filter_backends import SearchFilterBackend, SuggesterFilterBackend
+from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
 
+from apps.documents import CategoryDocument
 from apps.filters import AdvFilterSet
-from apps.models import PhoneNumber, Adv, Category
+from apps.models import Adv, Category, PhoneNumber
 from apps.models.news import News
 from apps.models.users import User
 from apps.pagination import CustomPageNumberPagination
-from apps.serializers import AddPhoneSerializer, NewsSerializer, AdvModelSerializer, LoginModelSerializer, \
-    CategoryModelSerializer, LogoutUserSerializer
-from apps.serializers import SendVerificationCodeSerialize, VerifyCodeSerializer
+from apps.serializers import (
+    AddPhoneSerializer,
+    AdvModelSerializer,
+    CategoryModelSerializer,
+    LoginModelSerializer,
+    LogoutUserSerializer,
+    NewsSerializer,
+    SendVerificationCodeSerialize,
+    UserSerializer,
+    VerifyCodeSerializer, ProductDocumentSerializer,
+)
+from drf_spectacular.utils import extend_schema
+from rest_framework import status
+from rest_framework.exceptions import ValidationError
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    GenericAPIView,
+    ListCreateAPIView,
+    RetrieveAPIView,
+)
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+
+
+class CategoryDocumentViewSet(DocumentViewSet):
+    document = CategoryDocument
+    serializer_class = ProductDocumentSerializer
+
+    filter_backends = [
+        SearchFilterBackend,
+        # SuggesterFilterBackend
+    ]
+    search_fields = ("id", "name")
+
+
+class UserListAPIView(ListCreateAPIView):
+    queryset = User.objects.order_by('id')
+    serializer_class = UserSerializer
+    pagination_class = CustomPageNumberPagination
 
 
 class AdvListCreateAPIView(ListCreateAPIView):
-    queryset = Adv.objects.all()
+    queryset = Adv.objects.order_by('created_at')
     serializer_class = AdvModelSerializer
     filterset_class = AdvFilterSet
     pagination_class = CustomPageNumberPagination

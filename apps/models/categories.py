@@ -1,4 +1,12 @@
-from django.db.models import Model, ForeignKey, CASCADE, CharField, ManyToManyField, SlugField, BooleanField
+from django.db.models import (
+    CASCADE,
+    BooleanField,
+    CharField,
+    ForeignKey,
+    ManyToManyField,
+    Model,
+    SlugField,
+)
 from django.utils.text import slugify
 
 

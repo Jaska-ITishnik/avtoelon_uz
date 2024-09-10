@@ -2,19 +2,30 @@ from random import randrange
 
 from django.contrib.auth import authenticate
 from django.core.cache import cache
-from rest_framework.exceptions import ValidationError, AuthenticationFailed
-from rest_framework.fields import CharField, HiddenField, CurrentUserDefault
+from django_elasticsearch_dsl_drf.serializers import DocumentSerializer
+from rest_framework.exceptions import AuthenticationFailed, ValidationError
+from rest_framework.fields import CharField, CurrentUserDefault, HiddenField
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from apps.models import News, User, PhoneNumber, Adv, Category
+from apps.documents import CategoryDocument
+from apps.models import Adv, Category, News, PhoneNumber, User
 
+
+class ProductDocumentSerializer(DocumentSerializer):
+    class Meta:
+        document = CategoryDocument
+
+        fields = (
+            'id',
+            'name'
+        )
 
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'first_name', 'last_name'
+        fields = "__all__"
 
 
 class AdvModelSerializer(ModelSerializer):
@@ -125,7 +136,8 @@ class SendVerificationCodeSerialize(Serializer):
     def validate_phone_number(self, value):
         if f"998{value}" in User.objects.values_list('phone_number', flat=True):
             raise ValidationError(
-                """This number is linked to another account. To add it to the current one, log in using this number and delete it from your account."""
+                """This number is linked to another account. To add it to the current one, log in using this number and 
+                delete it from your account."""
             )
         if not value.isdigit() or len(value) > 9:
             raise ValidationError("Enter a valid phone number")

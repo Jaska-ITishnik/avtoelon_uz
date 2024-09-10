@@ -47,3 +47,119 @@ class AdvertisementFilter(FilterSet):
     is_negotiable = filters.BooleanFilter(field_name='is_negotiable')
     is_dealership = filters.BooleanFilter(field_name='is_dealership')
     is_lease_with_buyout = filters.BooleanFilter(field_name='is_lease_with_buyout')
+
+
+
+docker django ✅
+scp, ssh ✅
+
+isort ✅
+flake8 ✅
+poetry
+pipenv
+backup ✅
+5 minute django project ✅
+django signals ✅
+code coverage ✅
+drf viewset
+(gitlab, github) ci/cd ❌
+elasticsearch
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+
+
+insert into apps_product(name, slug, price, discount, description, category_id, updated_at, created_at, image)
+select md5(generate_series::text)                            as name,
+       md5(generate_series::text)                            as slug,
+       (random() * 1385)::integer * 1000 + 15000             as price,
+       (random() * 100)::integer                             as discount,
+       md5(generate_series::text)                            as description,
+       (select id
+        from apps_category
+        order by random()
+        limit 1)                                             as category_id,
+       (now() - interval '24 year' * random())::timestamptz  as updated_at,
+       (now() - interval '24 year' * random())::timestamptz as created_at,
+       ''
+from generate_series(17, 500000);
+
+
+-- 500K postgres 200ms
+-- 10mln elastic 0.1s
+
+
+websocket + pytest
+graphql
+AWS
+nginx
+
+pypi publish packages
+publish django packages
+
+
+
+DockerFile CMD
+
+docker build -t new_image_1 .
+
+docker run -p 8000:8000 -d new_image_1
+
+docker exec -it 53c7f47985bc sh -c 'python3 manage.py makemigrations && python3 manage.py migrate'
+
+
+
+docker compose CMD
+
+docker compose up -d
+docker compose up --build
+docker compose down
+docker compose down -v
+
+docker compose exec -itu postgres postgres_service psql -c 'create database drf_p21;'
+
+
+docker hub ga yuklash
+
+docker compose build
+docker compose push
+
+
+#Homework
+docker compose ga redis,postgres,django
+
+
+ssh macbook@temur.local
+scp .env macbook@temur.local:/Users/macbook/project_test
+
+docker-compose.yaml va .env ni
+o'tkazish kk
+
+
+
+ssh
+scp
+
+docker compose build
+docker compose push
+
+docker compose up
+
+
+ssh wick@164.230.45.12:/home/wick/test_project
+
+
+scp -r ./*
+
+pg_restore
+pg_dump
+
+docker volume ps
+
+pg_data
+docker inspect con_id
+/var/docker/volume/data/pg_data
+
+db (sqlite, mysql, postgres, oracle)
+project
+
+media
+server (snapshot)

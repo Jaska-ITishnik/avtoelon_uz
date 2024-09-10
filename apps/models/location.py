@@ -1,4 +1,4 @@
-from django.db.models import ForeignKey, CASCADE
+from django.db.models import CASCADE, ForeignKey
 
 from .categories import SlugBase
 

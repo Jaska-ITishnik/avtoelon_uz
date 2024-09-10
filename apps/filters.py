@@ -1,6 +1,5 @@
-from django_filters import FilterSet, BooleanFilter
-
 from apps.models import Adv
+from django_filters import BooleanFilter, FilterSet
 
 
 class AdvFilterSet(FilterSet):

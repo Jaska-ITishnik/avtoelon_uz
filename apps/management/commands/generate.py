@@ -1,7 +1,6 @@
+from apps.models import Adv, Category, News, Region, SubCategory, User
 from django.core.management import BaseCommand
 from faker import Faker
-
-from apps.models import News, Category, Adv, SubCategory, User, Region
 
 
 class Command(BaseCommand):

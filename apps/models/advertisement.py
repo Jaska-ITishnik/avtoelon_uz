@@ -1,5 +1,12 @@
-from django.db.models import Model, ForeignKey, CASCADE, DateTimeField, \
-    BooleanField, TextField, ImageField
+from django.db.models import (
+    CASCADE,
+    BooleanField,
+    DateTimeField,
+    ForeignKey,
+    ImageField,
+    Model,
+    TextField,
+)
 
 
 class Adv(Model):
